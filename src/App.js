@@ -7,7 +7,7 @@ export default function App() {
     <div className="App">
       <div className="container">
         <h1>Weather App</h1>
-        <Weather />
+        <Weather defaultCity="New York" />
         <footer>
           This project was coded by{" "}
           <a href="https://github.com/JohnNesha" target="_blank">
@@ -20,6 +20,10 @@ export default function App() {
           >
             {" "}
             open-sourced on Github
+          </a>{" "}
+          and{" "}
+          <a href="https://jg-react-weatherapp.netlify.app/">
+            hosted on Netlify
           </a>
         </footer>
       </div>
