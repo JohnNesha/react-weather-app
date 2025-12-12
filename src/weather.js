@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import WeatherInfo from "./weatherInfo";
 import WeatherForecast from "./weatherForecast";
+import WeatherDays from "./weatherDays";
 import axios from "axios";
 import "./weather.css";
 
@@ -62,6 +63,7 @@ export default function Weather(props) {
         </form>
         <WeatherInfo data={weatherData} />
         <WeatherForecast coordinates={weatherData.coordinates} />
+        <WeatherDays />
       </div>
     );
   } else {
