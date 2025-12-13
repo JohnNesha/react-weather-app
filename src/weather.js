@@ -9,13 +9,30 @@ export default function Weather(props) {
   const [city, setCity] = useState(props.defaultCity);
 
   function handleResponse(response) {
+    const iconUrl = response.data.condition.icon_url;
+
+    let iconCode = "01d";
+    if (iconUrl.includes("clear-sky-day")) iconCode = "01d";
+    else if (iconUrl.includes("clear-sky-night")) iconCode = "01n";
+    else if (iconUrl.includes("few-clouds-day")) iconCode = "02d";
+    else if (iconUrl.includes("few-clouds-night")) iconCode = "02n";
+    else if (iconUrl.includes("scattered-clouds")) iconCode = "03d";
+    else if (iconUrl.includes("broken-clouds")) iconCode = "04d";
+    else if (iconUrl.includes("shower-rain")) iconCode = "09d";
+    else if (iconUrl.includes("rain-day")) iconCode = "10d";
+    else if (iconUrl.includes("rain-night")) iconCode = "10n";
+    else if (iconUrl.includes("thunderstorm")) iconCode = "11d";
+    else if (iconUrl.includes("snow")) iconCode = "13d";
+    else if (iconUrl.includes("mist")) iconCode = "50d";
+    else if (iconUrl.includes("overcast-clouds")) iconCode = "04d";
+
     setWeatherData({
       ready: true,
       temperature: response.data.temperature.current,
       humidity: response.data.temperature.humidity,
       date: new Date(response.data.time * 1000),
       description: response.data.condition.description,
-      icon: response.data.condition.icon_url,
+      icon: iconCode,
       wind: response.data.wind.speed,
       city: response.data.city,
     });
